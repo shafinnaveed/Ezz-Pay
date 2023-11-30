@@ -1,0 +1,381 @@
+<!-- res/layout/activity_home.xml -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/topBackgroundView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/gradient_background"
+        />
+    <View
+        android:id="@+id/smallCircleView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/circle_background"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="5dp"
+
+
+        />
+
+    <TextView
+        android:id="@+id/userNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="69dp"
+        android:layout_alignBottom="@+id/topBackgroundView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="26dp"
+        android:textColor="@color/black"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="5dp"
+        android:layout_toStartOf="@+id/accountNumberTextView"
+        android:padding="16dp"
+        android:text="User Name"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/accountNumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/acc"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="-1dp"
+        android:padding="16dp"
+        android:text="XXXXXXXXXXXX"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/acc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="-1dp"
+        android:padding="16dp"
+        android:textColor="@color/black"
+        android:text="Account Number"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/balanceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/topBackgroundView"
+        android:layout_marginTop="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="Balance: "
+        android:textSize="26sp"
+        android:visibility="invisible"/>
+
+    <TextView
+        android:id="@+id/pointsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/balanceTextView"
+        android:layout_marginTop="8dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="Points: "
+        android:textSize="16sp"
+        android:visibility="invisible"/>
+
+    <Button
+
+        style="@style/ButtonStyle"
+        android:id="@+id/showBalanceButton"
+        android:layout_width="165dp"
+        android:layout_height="66dp"
+        android:layout_below="@id/topBackgroundView"
+        android:layout_marginTop="16dp"
+        android:onClick="toggleButtonClick"
+        android:text="Show balance"
+        android:visibility="visible" />
+    <Button
+        android:backgroundTint="#A30622BF"
+        android:textColor="@color/black"
+        android:id="@+id/hideBalance"
+        android:layout_width="165dp"
+        android:layout_height="66dp"
+        android:layout_below="@id/topBackgroundView"
+        android:layout_marginTop="16dp"
+        android:onClick="toggleButtonClick"
+        android:text="Hide Balance"
+        android:layout_alignParentEnd="true"
+        android:visibility="invisible" />
+    <LinearLayout
+        android:id="@+id/buttonContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageButton
+            android:id="@+id/sendDonationButton"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:contentDescription="Send Donation"
+            android:scaleType="centerInside"
+            android:src="@drawable/donation"
+            android:background="@android:color/transparent"
+
+            />
+        />
+
+        <ImageButton
+            android:id="@+id/complainButton"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:contentDescription="Complain"
+            android:scaleType="centerInside"
+            android:src="@drawable/complain"
+            android:background="@android:color/transparent"/>
+        />
+
+        <ImageButton
+            android:id="@+id/qrCodeButton"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:contentDescription="QR Code"
+            android:scaleType="centerInside"
+            android:src="@drawable/qr"
+            android:background="@android:color/transparent"/>
+        />
+
+        <ImageButton
+            android:id="@+id/settingsButton"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:contentDescription="Settings"
+            android:scaleType="centerInside"
+            android:src="@drawable/setting"
+            android:background="@android:color/transparent"/>
+
+        <ImageButton
+            android:id="@+id/logoutButton"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:contentDescription="Logout"
+            android:scaleType="centerInside"
+            android:src="@drawable/logout"
+            android:background="@android:color/transparent"/>
+        />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonContainer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- First Row of Image Buttons -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/sendMoneyButton"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Send Money"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/send_money" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Send Money" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="30dp"
+                android:layout_height="1dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/rechargeButton"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Recharge"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/recharge" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recharge" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="30dp"
+                android:layout_height="1dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/billPaymentButton"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Bill Payment"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/bill" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bill Payment" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="30dp"
+            android:layout_height="40dp" />
+
+        <!-- Second Row of Image Buttons -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/pointsButton"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Points"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/points" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Moye Points" />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="30dp"
+                android:layout_height="1dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/historyButton"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="History"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/history" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="   History   " />
+            </LinearLayout>
+
+            <Space
+                android:layout_width="30dp"
+                android:layout_height="1dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/loanButton"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="Loan"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/loan" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Loan" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/qrCodeImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:contentDescription="QR Code"/>
+    <TextView
+        android:layout_below="@id/qrCodeImageView"
+        android:id="@+id/qrText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your QR Code"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        />
+
+
+
+</RelativeLayout>

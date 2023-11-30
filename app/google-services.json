@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "703382811602",
+    "project_id": "ezz-pay",
+    "storage_bucket": "ezz-pay.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:703382811602:android:adeed1d76bc1b9ad7e0e0b",
+        "android_client_info": {
+          "package_name": "com.example.ezzpay"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqUehNANbLLmbEYauEkN01PyZwCDk7yrU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

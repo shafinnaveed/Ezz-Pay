@@ -1,0 +1,97 @@
+<!-- activity_create_account.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".CreateAccountActivity"
+    android:background="@drawable/background"
+    >
+
+    <ImageView
+        android:id="@+id/imageViewLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="269dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="1dp"
+        android:src="@drawable/logo" />
+    <EditText
+        android:layout_below="@id/imageViewLogo"
+        style="@style/TextViewStyle"
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        style="@style/TextViewStyle"
+        android:id="@+id/editTextNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextName"
+        android:layout_marginTop="8dp"
+        android:hint="Number"
+
+        android:inputType="phone" />
+    <EditText
+        style="@style/TextViewStyle"
+        android:id="@+id/editTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextNumber"
+        android:layout_marginTop="8dp"
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+    <EditText
+        style="@style/TextViewStyle"
+        android:id="@+id/editTextReEnterPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextPassword"
+        android:layout_marginTop="8dp"
+        android:hint="Re-enter Password"
+        android:inputType="textPassword" />
+
+    <EditText
+        style="@style/TextViewStyle"
+        android:id="@+id/editTextEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextReEnterPassword"
+        android:layout_marginTop="8dp"
+        android:hint="Email"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        style="@style/TextViewStyle"
+        android:id="@+id/editTextIdCardNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextEmail"
+        android:layout_marginTop="8dp"
+        android:hint="ID Card Number"
+        android:inputType="phone" />
+
+    <Button
+
+        style="@style/ButtonStyle"
+        android:id="@+id/buttonCreateAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextIdCardNumber"
+        android:layout_marginTop="16dp"
+        android:text="Create Account" />
+
+    <Switch
+        android:id="@+id/switchFingerprint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonCreateAccount"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text=" Enable Fingerprint"
+        android:textColor="@color/white">
+</Switch>
+</RelativeLayout>

@@ -1,0 +1,18 @@
+<resources>
+
+    <!-- Style for TextViews -->
+    <style name="TextViewStyle">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Style for Buttons -->
+    <style name="ButtonStyle">
+        <item name="android:backgroundTint">@android:color/holo_blue_light</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+
+
+</resources>
