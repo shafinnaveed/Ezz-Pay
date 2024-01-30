@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/gradient_background"
+    android:padding="16dp">
+
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/senderAccountNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sender Name: " />
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/senderAccountNumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sender: " />
+
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/receiverAccountNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Receiver Name: " />
+
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/receiverAccountNumberTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Receiver: " />
+
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/amountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Amount: " />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray" />
+</LinearLayout>

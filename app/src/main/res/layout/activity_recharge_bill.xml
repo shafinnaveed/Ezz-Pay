@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/topBackgroundView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/gradient_background"
+        />
+    <TextView
+        android:textColor="@color/black"
+        style="@style/TextViewStyle"
+        android:id="@+id/transactionLimitText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Currently, our transactions are limited to Ezz Pay accounts only until we get permission from State Bank Of Pakistan."
+        android:textSize="16sp" />
+
+    </RelativeLayout>

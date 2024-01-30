@@ -7,7 +7,11 @@ data class User(
     val idCardNumber: String,
     val rating: Double,
     val reviews: Int,
-    val balance: Double,
-    val accountNumber: String,
-    val points: Int
+    var balance: Double,
+    var accountNumber: String,
+    var points: Int
 )
+{
+    // Secondary constructor for creating an empty User
+    constructor() : this("", "", "", "", 0.0, 0, 0.0, "", 0)
+}

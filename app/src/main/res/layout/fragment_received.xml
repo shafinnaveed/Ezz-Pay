@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <View
+        android:id="@+id/topBackgroundView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/gradient_background" />
+
+    <!-- Text View -->
+    <TextView
+        style="@style/TextViewStyle"
+        android:id="@+id/textTransactionHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Transaction History (Received)"
+        android:layout_marginTop="25dp"
+        android:textSize="28sp"
+        android:textColor="@color/black"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/topBackgroundView"
+        android:layout_marginTop="16dp"
+        android:padding="16dp"
+        android:clipToPadding="false"
+        android:background="@android:color/background_light"
+        android:scrollbars="vertical" />
+
+
+</RelativeLayout>

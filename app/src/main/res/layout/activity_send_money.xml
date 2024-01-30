@@ -1,0 +1,114 @@
+<!-- res/layout/activity_send_money.xml -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <me.dm7.barcodescanner.zxing.ZXingScannerView
+        android:id="@+id/scannerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:rotation="90"/>
+    <View
+        android:id="@+id/topBackgroundView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/gradient_background"
+        />
+
+    <TextView
+        android:textColor="@color/black"
+        style="@style/TextViewStyle"
+        android:id="@+id/transactionLimitText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Currently, our transactions are limited to Ezz Pay accounts until we get permission from State Bank Of Pakistan."
+        android:textSize="16sp" />
+
+    <!-- Input field for account number -->
+    <EditText
+        android:id="@+id/accountNumberEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/topBackgroundView"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:hint="Enter Account Number"
+        android:inputType="number" />
+
+    <!-- Input field for amount -->
+    <EditText
+        android:id="@+id/amountEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/accountNumberEditText"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:hint="Enter Amount"
+        android:inputType="numberDecimal" />
+
+    <!-- Button to initiate the money transfer -->
+    <Button
+        android:id="@+id/transferButton"
+        style="@style/ButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/amountEditText"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="onTransferButtonClick"
+        android:text="Transfer Money" />
+    <Button
+        android:id="@+id/home"
+        style="@style/ButtonStyle"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/amountEditText"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="onHomeButtonCLick"
+        android:text="Go to Home" />
+    <Button
+        style="@style/ButtonStyle"
+        android:id="@+id/confirm_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/transferButton"
+        android:layout_margin="16dp"
+        android:text="Confirm"
+        android:onClick="onTransferButtonClick"
+        android:visibility="invisible"
+        />
+
+
+    <Button
+        style="@style/ButtonStyle"
+        android:id="@+id/scanButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scan QR Code"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp" />
+
+</RelativeLayout>

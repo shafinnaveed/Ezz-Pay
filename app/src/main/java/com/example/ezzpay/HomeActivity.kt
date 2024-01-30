@@ -1,21 +1,26 @@
 package com.example.ezzpay
-
-import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
 import com.google.zxing.WriterException
 import com.google.zxing.common.BitMatrix
+import java.text.SimpleDateFormat
+import java.util.Calendar
+
 
 class HomeActivity : AppCompatActivity() {
 
@@ -29,6 +34,18 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var qrCodeImageView: ImageView
     private var accountNumber="1234567"
     private lateinit var qrTextView: TextView
+    private lateinit var complainButton: ImageButton
+    private lateinit var sendMoneyButton: ImageButton
+    private lateinit var historyButton: ImageButton
+    private lateinit var logoutButton: ImageButton
+    private lateinit var rechargeButton: ImageButton
+    private lateinit var billButton:ImageButton
+    private lateinit var donationButton:ImageButton
+    private lateinit var loanButton: ImageButton
+    private lateinit var settingButton: ImageButton
+    private lateinit var moyePointsButton: ImageButton
+    private lateinit var refreshButton: ImageButton
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,16 +61,134 @@ class HomeActivity : AppCompatActivity() {
         qrTextView=findViewById(R.id.qrText)
         generateQRCodeButton = findViewById<ImageButton>(R.id.qrCodeButton)
         qrCodeImageView = findViewById(R.id.qrCodeImageView)
+        sendMoneyButton=findViewById<ImageButton>(R.id.sendMoneyButton)
+        complainButton=findViewById<ImageButton>(R.id.complainButton)
+        historyButton=findViewById<ImageButton>(R.id.historyButton)
+        logoutButton=findViewById<ImageButton>(R.id.logoutButton)
+        rechargeButton=findViewById<ImageButton>(R.id.rechargeButton)
+        billButton=findViewById<ImageButton>(R.id.billPaymentButton)
+        donationButton=findViewById<ImageButton>(R.id.sendDonationButton)
+        loanButton=findViewById<ImageButton>(R.id.loanButton)
+        refreshButton=findViewById<ImageButton>(R.id.refreshButton)
+        settingButton=findViewById<ImageButton>(R.id.settingsButton)
+        moyePointsButton=findViewById<ImageButton>(R.id.pointsButton)
+
         generateQRCodeButton.setOnClickListener {
             qrCodeImageView.visibility = View.VISIBLE
             qrTextView.visibility=View.VISIBLE
-
             generateQRCode(accountNumber)
         }
+        settingButton.setOnClickListener{
+            startActivity(Intent(this, SettingActivity::class.java))
+        }
+        moyePointsButton.setOnClickListener{
+            startActivity(Intent(this, PointsActivity::class.java))
+        }
+
+        sendMoneyButton.setOnClickListener{
+            startActivity(Intent(this, SendMoneyActivity::class.java))
+        }
+        rechargeButton.setOnClickListener{
+            startActivity(Intent(this, RechargeBillActivity::class.java))
+        }
+        billButton.setOnClickListener{
+            startActivity(Intent(this, RechargeBillActivity::class.java))
+        }
+        donationButton.setOnClickListener{
+            startActivity(Intent(this,DonationActivity::class.java))
+        }
+        loanButton.setOnClickListener{
+            startActivity(Intent(this,LoanActivity::class.java))
+        }
+        refreshButton.setOnClickListener{
+            finish()
+            startActivity(Intent(this,HomeActivity::class.java))
+        }
+
+
+        complainButton.setOnClickListener {
+            // Handle button click
+            onComplainButtonClick(it)
+        }
+
 
         // Fetch and display user data
         fetchUserData()
+
+        historyButton.setOnClickListener{
+            startActivity(Intent(this, HistoryActivity::class.java))
+        }
+        logoutButton.setOnClickListener{
+            Toast.makeText(this, "Logged Out", Toast.LENGTH_SHORT).show()
+            finish()
+            startActivity(Intent(this,MainActivity::class.java))
+        }
+
+
+
     }
+    fun onComplainButtonClick(view: View) {
+        val alertDialogBuilder = AlertDialog.Builder(this)
+        alertDialogBuilder.setTitle("Complain")
+        alertDialogBuilder.setMessage("Enter your complaint here:")
+
+        // Add an EditText for user input
+        val input = EditText(this)
+        alertDialogBuilder.setView(input)
+
+        // Set positive button action
+        val database = Firebase.database
+        val complaintsRef = database.getReference("complaints")
+
+        alertDialogBuilder.setPositiveButton("Submit") { _, _ ->
+            // Handle the submission here (send email, etc.)
+            val complaintText = input.text.toString()
+            val currentDateTime = getCurrentDateTime()
+
+            // Save complaint to Firebase Realtime Database
+            val currentUserAccountNo = accountNumber
+            val complaintId = complaintsRef.push().key
+            val complaint = Complaint(complaintId, currentUserAccountNo, complaintText,currentDateTime)
+
+            complaintsRef.child(complaintId!!).setValue(complaint)
+
+            // Show a confirmation message
+            showConfirmationDialog()
+        }
+
+        // Set negative button action
+        alertDialogBuilder.setNegativeButton("Cancel") { dialog, _ ->
+            dialog.dismiss()
+        }
+
+        // Show the AlertDialog
+        val alertDialog = alertDialogBuilder.create()
+        alertDialog.show()
+    }
+    private fun getCurrentDateTime(): String {
+        val calendar = Calendar.getInstance()
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        return dateFormat.format(calendar.time)
+    }
+    private fun showConfirmationDialog() {
+        // Create a confirmation dialog
+        val confirmationDialogBuilder = AlertDialog.Builder(this)
+        confirmationDialogBuilder.setTitle("Thank You")
+        confirmationDialogBuilder.setMessage("Your complaint has been submitted. We will contact you within 3 working days.")
+
+        // Set positive button action
+        confirmationDialogBuilder.setPositiveButton("OK") { dialog, _ ->
+            dialog.dismiss()
+        }
+
+        // Show the confirmation dialog
+        val confirmationDialog = confirmationDialogBuilder.create()
+        confirmationDialog.show()
+
+    }
+
+
+
     override fun onBackPressed() {
         // Check if the QR code is displayed
         if (qrCodeImageView.drawable != null) {
@@ -69,8 +204,8 @@ class HomeActivity : AppCompatActivity() {
             val bitMatrix: BitMatrix = MultiFormatWriter().encode(
                 data,
                 BarcodeFormat.QR_CODE,
-                800,
-                800
+                1000,
+                1000
             )
 
             val width = bitMatrix.width
@@ -104,13 +239,15 @@ class HomeActivity : AppCompatActivity() {
                     val points = snapshot.child("points").value.toString()
                     showBalance.setOnClickListener { showBalance.visibility = View.INVISIBLE
                     hideBalance.visibility=View.VISIBLE
+                        refreshButton.visibility=View.VISIBLE
                     balanceTextView.visibility=View.VISIBLE
                     pointsTextView.visibility=View.VISIBLE}
 
                     hideBalance.setOnClickListener { showBalance.visibility = View.VISIBLE
                         hideBalance.visibility=View.INVISIBLE
                         balanceTextView.visibility=View.INVISIBLE
-                        pointsTextView.visibility=View.INVISIBLE}
+                        pointsTextView.visibility=View.INVISIBLE
+                        refreshButton.visibility=View.INVISIBLE}
 
                     // Update UI with retrieved data
                     updateUI(userName, accountNumber, balance, points)
@@ -129,4 +266,6 @@ class HomeActivity : AppCompatActivity() {
         balanceTextView.text = "Balance: $balance"
         pointsTextView.text = "Points: $points"
     }
+
 }
+

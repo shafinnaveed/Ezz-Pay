@@ -1,24 +1,14 @@
 package com.example.ezzpay
-import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
-import android.hardware.fingerprint.FingerprintManager
 import android.os.Build
 import android.os.Bundle
-import android.os.CancellationSignal
-import android.security.keystore.KeyGenParameterSpec
-import android.security.keystore.KeyProperties
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Switch
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import java.security.KeyStore
-import javax.crypto.Cipher
-import javax.crypto.KeyGenerator
-import javax.crypto.SecretKey
+
 
 
 class MainActivity : AppCompatActivity() {

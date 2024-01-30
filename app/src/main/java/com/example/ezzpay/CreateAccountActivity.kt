@@ -37,11 +37,14 @@ class CreateAccountActivity : AppCompatActivity() {
             val password = editTextPassword.text.toString().trim()
             val reEnterPassword = editTextReEnterPassword.text.toString().trim()
 
-            if (name.isNotEmpty() && number.isNotEmpty() && email.isNotEmpty() && idCardNumber.isNotEmpty() && isValidPassword(password) && passwordsMatch(password, reEnterPassword)) {
-                // Check if the ID card number is unique
-                checkUniqueIdCardNumber(idCardNumber, name, number, email, password)
-            } else {
-                Toast.makeText(this, "Please fill in all fields and provide a valid password.", Toast.LENGTH_SHORT).show()
+            when {
+                name.isEmpty() -> Toast.makeText(this, "Please enter your name.", Toast.LENGTH_SHORT).show()
+                !isValidMobileNumber(number) -> Toast.makeText(this, "Please enter a valid 11-digit mobile number.", Toast.LENGTH_SHORT).show()
+                email.isEmpty() -> Toast.makeText(this, "Please enter your email address.", Toast.LENGTH_SHORT).show()
+                !isValidIdCardNumber(idCardNumber) -> Toast.makeText(this, "Please enter a valid 14-digit CNIC.", Toast.LENGTH_SHORT).show()
+                !isValidPassword(password) -> Toast.makeText(this, "Please enter a valid password (at least 8 characters with at least one number).", Toast.LENGTH_SHORT).show()
+                !passwordsMatch(password, reEnterPassword) -> Toast.makeText(this, "Passwords do not match.", Toast.LENGTH_SHORT).show()
+                else -> checkUniqueIdCardNumber(idCardNumber, name, number, email, password)
             }
         }
     }
@@ -49,6 +52,15 @@ class CreateAccountActivity : AppCompatActivity() {
     private fun passwordsMatch(password: String, reEnterPassword: String): Boolean {
         // Check if the entered password and re-entered password match
         return password == reEnterPassword
+    }
+    private fun isValidMobileNumber(mobileNumber: String): Boolean {
+        // Mobile number should be 11 digits
+        return mobileNumber.length == 11 && mobileNumber.all { it.isDigit() }
+    }
+
+    private fun isValidIdCardNumber(idCardNumber: String): Boolean {
+        // CNIC should be 14 digits
+        return idCardNumber.length == 14 && idCardNumber.all { it.isDigit() }
     }
 
     private fun isValidPassword(password: String): Boolean {
@@ -110,7 +122,7 @@ class CreateAccountActivity : AppCompatActivity() {
             }
     }
     private fun generateUniqueAccountNumber(): String {
-        val allowedChars = ('0'..'9')
+
         val randomDigits = generateRandomDigits(10)
 
         // Concatenate "0420" with the random digits

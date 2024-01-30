@@ -2,7 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,6 +18,37 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EzzPay"
         tools:targetApi="31">
+        <activity
+            android:name=".PointsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DonationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RechargeBillActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="portrait"
+            android:stateNotNeeded="true"
+            tools:replace="android:screenOrientation" />
+        <activity
+            android:name=".SendMoneyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ScanQrCodeActivity"
+            android:exported="false"
+            android:label="Scan QR Code"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

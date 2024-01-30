@@ -1,0 +1,19 @@
+<resources>
+    <string-array name="ngo_options">
+        <item>JDC Foundation Pakistan</item>
+        <item>EDHI Foundation</item>
+        <item>AGA Khan Foundation</item>
+        <item>SAYLANI Welfare Trust</item>
+        <item>ANSAR BURNEY Trust</item>
+        <item>DAR-UL-SUKUN</item>
+        <item>WAR (War Against Rape)</item>
+        <item>AKHUWAT Foundation</item>
+        <item>KASHF Foundation</item>
+        <item>CHIPPA Welfare Association</item>
+        <item>AMAN Foundation</item>
+        <item>AL-KHIDMAT Foundation</item>
+        <item>AURAT Foundation</item>
+        <item>TCF</item>
+        <item>GREEN CRESCENT Trust</item>
+    </string-array>
+</resources>
